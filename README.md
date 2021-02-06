@@ -1,4 +1,4 @@
-# Abaqus User Element/Material for Enriched Finite Element Method
+# Abaqus User Elements/Material for Enriched Finite Element Method
 
 This Fortran code was developed to perform material damage detection via higher order harmonics by interfacing with the commercially available simulation tool, Abaqus. 
 
