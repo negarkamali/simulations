@@ -1,1 +1,1 @@
-# UEL/Material for Enriched Finite Element Method
+# Abaqus User Element/Material for Enriched Finite Element Method
