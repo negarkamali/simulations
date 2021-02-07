@@ -81,21 +81,6 @@ C           write(*,*)('--')
             ELX = PROPS(6)
             ELY = PROPS(7)
 			   Omega = PROPS(8)
-C               WRITE(*,*)('negar4')
-C       write(*,*) 'KINC:'
-C       WRITE(*,*)(KINC)
-C           write(*,*) '****U****'
-C       WRITE(*,*)(U)
-C        if (jelem.eq.(16)) then
-C C               write(*,*) 'u(top-left///////////\\\\\\\\\'
-C C             if (kinc.eq.1) then
-C             write(*,*) 'kinc:'
-C            write(*,*)(kinc)
-C C                end if
-C             do n=1, ndofel
-C             write(*,*)(u(n))
-C             end do
-C                end if 
                  ndofn = ndofel/4
                 
        Elambda = (Enu*E)/((1+Enu)*(1-(2*Enu)))
@@ -218,7 +203,7 @@ C 						ELSE IF (NINTP.EQ.12.AND.INTS.EQ.2) THEN
 C 						POINT = COTNEW12(IINTP)
 C 						WEIGHT = CW12(IINTP)
 C 						ELSE
-C 						WRITE(7,*) ’Unspecified integration required’
+C 						WRITE(7,*) â€™Unspecified integration requiredâ€™
 C 						CALL FLUSH_(7)
 C 						CALL XIT
 C 						END IF
@@ -329,7 +314,6 @@ C          Ours
             
 ! en_n => number of enrichment functions per node
      
-C               WRITE(*,*)('negar3')
       DO I=1,2
            DO K=1,ndofel
              AN(I,K)=0.0D0
@@ -674,24 +658,6 @@ c ==============================================================
        !
        !ENDIf
        
-c
-c       CALCULATE INCREMENTAL STRAINS
-c 
-C       WRITE(*,*)('negar2')
-        do i = 1, ntens
-          dstran(i) = zero
-        end do
-        !
-        ! set deformation gradient  to Identity matrix
-        do k1=1,3
-          do k2=1,3
-            defGrad(k1,k2) = zero
-          end do
-          defGrad(k1,k1) = one
-        end do
-c
-c       COMPUTE INCREMENTAL STRAINS
-c
         do nodi = 1, nnode
            
           incr_row = (nodi - 1)*ndof
@@ -774,7 +740,6 @@ c
         dvmat  = djac*thickness
         !      dvmat = zero
         !celent = one
-C       WRITE(*,*)('negar')
       
         dvdv0 = one
         call material_lib_mech(materiallib,stress,ddsdde,
@@ -791,7 +756,6 @@ c
       !     DO K1=1,4
       !    WRITE(*,*)(stress(K1))
       !ENDDO
-C         WRITE(*,*)('negar1')
            D(1,1)=ddsdde(1,1)
            D(2,2)=ddsdde(2,2)
            D(1,2)=ddsdde(1,2)
@@ -870,7 +834,6 @@ C        enddo
         end do
         end do 
 c		Dynamic ----------------------------------------------------       
-C           WRITE(*,*)('negar2') 
       IF (LFLAGS(1).EQ.11 .OR. LFLAGS(1).EQ.12) THEN
 	     ALPHA = PARAMS(1)
           BETA  = PARAMS(2)
@@ -898,7 +861,6 @@ C           WRITE(*,*)('negar2')
           enddo
       end do
       endif
-C  	     WRITE(*,*)('negar3')
 c------------------------------------------------------------------
 c------------------------------------------------------------------------
 c------------------------------------------------------------------
@@ -1261,7 +1223,6 @@ C       end do       ! end loop on material integration points
 c
  999  continue
 c
-C       	  write(*,*)('negar4')
        if (jelem.eq.(9)) then
 C               write(*,*) 'u(top-left///////////\\\\\\\\\'
 C             if (kinc.eq.1) then
